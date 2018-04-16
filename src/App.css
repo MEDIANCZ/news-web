@@ -1,0 +1,65 @@
+section.resume-section {
+    min-height: 0vh;
+}
+
+.img-logo {
+    max-width: 10rem;
+    max-height: 10rem;
+    border: none;
+}
+
+.resume-section img {
+    width: 100%;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+.bg-primary {
+    background-color: #5c0300!important;
+}
+
+.feature-link {
+    font-weight: bold;
+}
+
+.nano {
+    height: 50vh;
+}
+
+.nano .nano-pane {
+    background: #8f0500;
+}
+
+.nano .nano-slider {
+    background: #330200;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, .5);
+}
+
+.nav-link .active {
+    color: rgba(255, 255, 255, 1);
+}
+
+.fenix-logo {
+    width: 60%;
+}
+
+.kiwi-logo {
+    width: 60%;
+    transform: scaleX(-1);
+    margin-left: -45px;
+}
+
+.img-logo {
+    backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
