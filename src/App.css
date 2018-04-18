@@ -11,6 +11,9 @@ section.resume-section {
 .resume-section img {
     max-width: 100%;
     max-height: 75vh;
+    backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 h1 {
