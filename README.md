@@ -1,2 +1,2 @@
 # Features & Fixes
-Novinky v aplikacích Fénix a Kiwi.
+Novinky v aplikacích Fénix a Kiwi
