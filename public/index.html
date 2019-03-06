@@ -22,7 +22,29 @@
     <link rel="stylesheet" href="css/nanoscroller.css">
 
     <!-- Custom styles for this template -->
-    <link href="css/resume.min.css" rel="stylesheet">
+    <link href="css/resume.min.css" rel="stylesheet" id="maincss">
+    <link href="css/fenix-dark-theme.css" rel="stylesheet alternate"  id="darkcss"  title="Dark">
+
+    <script>
+        function enableStylesheet (node) {
+        node.rel = 'stylesheet';
+        }
+
+        function disableStylesheet (node) {
+        node.rel = 'alternate stylesheet';
+        }
+
+        var url = location.search;
+
+        if(url === "?theme=dark"){
+
+        var dark = document.getElementById('darkcss');
+        dark.rel = "stylesheet";
+
+        var elem = document.getElementById('maincss');
+        elem.rel = "stylesheet alternate";
+        }
+    </script>  
 
 </head>
 
