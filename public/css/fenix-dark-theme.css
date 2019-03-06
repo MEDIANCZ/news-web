@@ -134,3 +134,6 @@ a:focus,
 a:active {
   color: white;
 }
+.nano .nano-pane {
+  background: #333333;
+}
