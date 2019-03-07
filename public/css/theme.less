@@ -1,0 +1,263 @@
+/* ThemeDark */
+
+// pozadí stránky
+@darkBackground: #3d3d3d;
+@lightBackground: white;
+
+// barva textu
+@darkTextColor: #DDDDDD;
+@lightTextColor: #666666;
+
+
+// barva nadpisů
+@darkHeadingColor: #FFFFFF;
+@lightHeadingColor: #000000;
+
+// barva odkazů
+@lightAnchorColor: #444444;
+@darkAnchorColor: #EEEEEE;
+@hoveredAnchorColor: #a1085c;
+
+// barva menu
+@lightMenuBackground: #1481a3;
+
+// barva posovníku
+@lightSlider: #178aac;
+
+// barva HR
+@darkHrColor: #2e2e2e;
+@lightHrColor: #eeeeee;
+
+
+
+@highlightedForeground: white;
+
+@nanoSliderColor: #333333;
+@sliderBackground: #3d3d3d;
+
+.site-background() when (@theme = 1) {
+  background-color: @darkBackground !important;
+  color: @darkTextColor;
+}
+
+.site-background() when (@theme = 0) {
+  background-color: @lightBackground !important;
+  color: @lightTextColor;
+}
+
+.menu-background() when (@theme = 1) {
+  background-color: @darkBackground !important;
+}
+
+.menu-background() when (@theme = 0) {
+  background-color: @lightMenuBackground !important;
+}
+
+.slider-color() when (@theme = 0) {
+  background-color: @lightSlider !important;
+}
+
+.text-color() when (@theme = 0) {
+  color: @lightTextColor !important;
+}
+
+.text-color() when (@theme = 1) {
+  color: @darkTextColor !important;
+}
+
+.heading-color() when (@theme = 0) {
+  color: @lightHeadingColor !important;
+}
+
+.heading-color() when (@theme = 1) {
+  color: @darkHeadingColor !important;
+}
+
+.anchor-color() when (@theme = 0) {
+  color: @lightAnchorColor !important;
+  text-decoration: underline;  
+}
+
+.anchor-color() when (@theme = 1) {
+  color: @darkAnchorColor !important;
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+
+.dashed-hr() when (@theme = 0) {
+  border-bottom: 1px dashed @lightHrColor;
+}
+
+.dashed-hr() when (@theme = 1) {
+  border-bottom: 1px dashed @darkHrColor;
+}
+
+
+body {
+  font-family: 'Open Sans', serif;
+  padding-top: 54px;  
+  .site-background();
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 0;
+    padding-left: 17rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Saira Extra Condensed', serif;
+  font-weight: 700;
+  text-transform: uppercase;  
+}
+
+h1 {
+  font-size: 6rem;
+  line-height: 5.5rem;
+  .heading-color();
+}
+
+h2 {
+  font-size: 3.5rem;
+  .heading-color();
+}
+
+.subheading {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: 'Saira Extra Condensed', serif;
+  font-size: 1.35rem;
+}
+
+.list-social-icons a {
+  color: #495057;
+}
+
+.list-social-icons a:hover {
+  color: @hoveredAnchorColor;
+}
+
+.list-social-icons a .fa-lg {
+  font-size: 1.75rem;
+}
+
+.list-icons {
+  font-size: 3rem;
+}
+
+.list-icons .list-inline-item i:hover {
+  color: @hoveredAnchorColor;
+}
+
+#sideNav .navbar-nav .nav-item .nav-link {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@media (min-width: 992px) {
+  #sideNav {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 17rem;
+    height: 100vh;
+  }
+  #sideNav .navbar-brand {
+    display: flex;
+    margin: auto auto 0;
+    padding: 0.5rem;
+  }
+  #sideNav .navbar-brand .img-profile {
+    max-width: 10rem;
+    max-height: 10rem;
+    border: 0.5rem solid rgba(255, 255, 255, 0.2);
+  }
+  #sideNav .navbar-collapse {
+    display: flex;
+    align-items: flex-start;
+    flex-grow: 0;
+    width: 100%;
+    margin-bottom: auto;
+  }
+  #sideNav .navbar-collapse .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+  #sideNav .navbar-collapse .navbar-nav .nav-item {
+    display: block;
+  }
+  #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
+    display: block;
+  }
+}
+
+section.resume-section {
+  .dashed-hr();
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+}
+
+section.resume-section .resume-item .resume-date {
+  min-width: none;
+}
+
+@media (min-width: 768px) {
+  section.resume-section {
+    min-height: 100vh;
+  }
+  section.resume-section .resume-item .resume-date {
+    min-width: 18rem;
+  }
+}
+
+@media (min-width: 992px) {
+  section.resume-section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+.bg-primary {
+  .menu-background();
+}
+
+.text-primary {
+  .text-color();
+}
+
+a {
+  .anchor-color();
+  font-weight: bolder;
+}
+
+a:hover, a:focus, a:active {
+  color: @hoveredAnchorColor !important;
+}
+
+a.nav-link {
+  color: rgba(255, 255, 255, 0.5) !important;
+  text-decoration: none;
+}
+
+a.nav-link:hover {
+  color: rgba(255, 255, 255, 0.7) !important;
+  
+}
+
+a.nav-link:active {
+  color: rgba(255, 255, 255, 0.9);  
+}
+
+.nano-slider {
+  .slider-color();
+}

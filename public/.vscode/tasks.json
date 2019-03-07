@@ -1,13 +1,19 @@
-{
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Less Compile",
-            "type": "shell",
-            "command": "lessc css/fenix-dark-theme.less css/fenix-dark-theme.css",
-            "group": "build"
-        }
-    ]
-}
+    {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "Less Compile Dark Theme",
+                "type": "shell",
+                "command": "lessc --modify-var=\"theme=1\" css/theme.less css/dark-theme.css",
+                "group": "build",
+                "problemMatcher": []
+            },
+            {
+                "label": "Less Compile Light Theme",
+                "type": "shell",
+                "command": "lessc --modify-var=\"theme=0\" css/theme.less css/light-theme.css",
+                "group": "build",
+                "problemMatcher": []
+            }
+        ]
+    }

@@ -1,23 +1,16 @@
-@mainColor: #3d3d3d;
-@commonForeground: #DDDDDD;
-@highlightedForeground: white;
-@hrColor: #2e2e2e;
-@nanoSliderColor: #333333;
-
+/* ThemeDark */
 body {
   font-family: 'Open Sans', serif;
   padding-top: 54px;
-  color: @commonForeground;
-  background-color: @mainColor;
+  background-color: white !important;
+  color: #666666;
 }
-
 @media (min-width: 992px) {
   body {
     padding-top: 0;
     padding-left: 17rem;
   }
 }
-
 h1,
 h2,
 h3,
@@ -27,52 +20,41 @@ h6 {
   font-family: 'Saira Extra Condensed', serif;
   font-weight: 700;
   text-transform: uppercase;
-  color: @commonForeground;
 }
-
 h1 {
   font-size: 6rem;
   line-height: 5.5rem;
-  color: @highlightedForeground;
+  color: #000000 !important;
 }
-
 h2 {
   font-size: 3.5rem;
-  color: @highlightedForeground;
+  color: #000000 !important;
 }
-
 .subheading {
   text-transform: uppercase;
   font-weight: 500;
   font-family: 'Saira Extra Condensed', serif;
   font-size: 1.35rem;
 }
-
 .list-social-icons a {
   color: #495057;
 }
-
 .list-social-icons a:hover {
-  color: @highlightedForeground;
+  color: #a1085c;
 }
-
 .list-social-icons a .fa-lg {
   font-size: 1.75rem;
 }
-
 .list-icons {
   font-size: 3rem;
 }
-
 .list-icons .list-inline-item i:hover {
-  color: @highlightedForeground;
+  color: #a1085c;
 }
-
 #sideNav .navbar-nav .nav-item .nav-link {
   font-weight: 600;
   text-transform: uppercase;
 }
-
 @media (min-width: 992px) {
   #sideNav {
     text-align: center;
@@ -112,17 +94,14 @@ h2 {
     display: block;
   }
 }
-
 section.resume-section {
-  border-bottom: 1px dashed @hrColor;
+  border-bottom: 1px dashed #eeeeee;
   padding-top: 5rem !important;
   padding-bottom: 5rem !important;
 }
-
 section.resume-section .resume-item .resume-date {
   min-width: none;
 }
-
 @media (min-width: 768px) {
   section.resume-section {
     min-height: 100vh;
@@ -131,35 +110,38 @@ section.resume-section .resume-item .resume-date {
     min-width: 18rem;
   }
 }
-
 @media (min-width: 992px) {
   section.resume-section {
     padding-top: 3rem !important;
     padding-bottom: 3rem !important;
   }
 }
-
 .bg-primary {
-  background-color: @mainColor !important;
+  background-color: #1481a3 !important;
 }
-
 .text-primary {
-  color: @commonForeground !important;
+  color: #666666 !important;
 }
-
 a {
-  text-decoration: underline !important;
-  color: @commonForeground;
+  color: #444444 !important;
+  text-decoration: underline;
+  font-weight: bolder;
 }
-
+a:hover,
+a:focus,
+a:active {
+  color: #a1085c !important;
+}
 a.nav-link {
-  text-decoration: none !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  text-decoration: none;
 }
-
-a:hover, a:focus, a:active {
-  color: @highlightedForeground;
+a.nav-link:hover {
+  color: rgba(255, 255, 255, 0.7) !important;
 }
-
-.nano .nano-pane {
-  background: @nanoSliderColor;
+a.nav-link:active {
+  color: rgba(255, 255, 255, 0.9);
+}
+.nano-slider {
+  background-color: #178aac !important;
 }

@@ -1,8 +1,9 @@
+/* ThemeDark */
 body {
   font-family: 'Open Sans', serif;
   padding-top: 54px;
+  background-color: #3d3d3d !important;
   color: #DDDDDD;
-  background-color: #3d3d3d;
 }
 @media (min-width: 992px) {
   body {
@@ -19,16 +20,15 @@ h6 {
   font-family: 'Saira Extra Condensed', serif;
   font-weight: 700;
   text-transform: uppercase;
-  color: #DDDDDD;
 }
 h1 {
   font-size: 6rem;
   line-height: 5.5rem;
-  color: white;
+  color: #FFFFFF !important;
 }
 h2 {
   font-size: 3.5rem;
-  color: white;
+  color: #FFFFFF !important;
 }
 .subheading {
   text-transform: uppercase;
@@ -40,7 +40,7 @@ h2 {
   color: #495057;
 }
 .list-social-icons a:hover {
-  color: white;
+  color: #a1085c;
 }
 .list-social-icons a .fa-lg {
   font-size: 1.75rem;
@@ -49,7 +49,7 @@ h2 {
   font-size: 3rem;
 }
 .list-icons .list-inline-item i:hover {
-  color: white;
+  color: #a1085c;
 }
 #sideNav .navbar-nav .nav-item .nav-link {
   font-weight: 600;
@@ -123,17 +123,22 @@ section.resume-section .resume-item .resume-date {
   color: #DDDDDD !important;
 }
 a {
-  text-decoration: underline !important;
-  color: #DDDDDD;
-}
-a.nav-link {
-  text-decoration: none !important;
+  color: #EEEEEE !important;
+  text-decoration: underline;
+  font-weight: bolder;
 }
 a:hover,
 a:focus,
 a:active {
-  color: white;
+  color: #a1085c !important;
 }
-.nano .nano-pane {
-  background: #333333;
+a.nav-link {
+  color: rgba(255, 255, 255, 0.5) !important;
+  text-decoration: none;
+}
+a.nav-link:hover {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+a.nav-link:active {
+  color: rgba(255, 255, 255, 0.9);
 }
