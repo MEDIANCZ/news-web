@@ -1,0 +1,9 @@
+.navbar-brand {
+    visibility: hidden !important;
+    height: 0px !important;
+    padding: 0px !important;
+}
+
+.nano {
+    height: 98vh !important;
+}

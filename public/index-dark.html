@@ -471,8 +471,38 @@
    <!-- Custom styles for this template -->
    <link href="css/light-theme.css" rel="stylesheet" id="lightcss">
    <link href="css/dark-theme.css" rel="stylesheet alternate"  id="darkcss"  title="Dark">
+   <link href="css/nologo.css" rel="stylesheet alternate"  id="nologo">
 
-    <script>
+    <script>     
+        function getJsonFromUrl(url) {
+  if(!url) url = location.href;
+  var question = url.indexOf("?");
+  var hash = url.indexOf("#");
+  if(hash==-1 && question==-1) return {};
+  if(hash==-1) hash = url.length;
+  var query = question==-1 || hash==question+1 ? url.substring(hash) : 
+  url.substring(question+1,hash);
+  var result = {};
+  query.split("&").forEach(function(part) {
+    if(!part) return;
+    part = part.split("+").join(" "); // replace every + with space, regexp-free version
+    var eq = part.indexOf("=");
+    var key = eq>-1 ? part.substr(0,eq) : part;
+    var val = eq>-1 ? decodeURIComponent(part.substr(eq+1)) : "";
+    var from = key.indexOf("[");
+    if(from==-1) result[decodeURIComponent(key)] = val;
+    else {
+      var to = key.indexOf("]",from);
+      var index = decodeURIComponent(key.substring(from+1,to));
+      key = decodeURIComponent(key.substring(0,from));
+      if(!result[key]) result[key] = [];
+      if(!index) result[key].push(val);
+      else result[key][index] = val;
+    }
+  });
+  return result;
+}
+        
         function enableStylesheet (node) {
         node.rel = 'stylesheet';
         }
@@ -483,7 +513,10 @@
 
         var url = location.search;
 
-        if(url === "?theme=dark"){
+        var obj = getJsonFromUrl(url);
+       
+
+        if(obj["theme"]=="dark"){
 
         var dark = document.getElementById('darkcss');
         dark.rel = "stylesheet";
@@ -497,6 +530,14 @@
 
             var elem = document.getElementById('lightcss');
             elem.rel = "stylesheet";
+        }
+
+        if(obj["nologo"]=="true") {
+            var nologo = document.getElementById('nologo');
+            nologo.rel = "stylesheet";    
+        } else {
+            var nologo = document.getElementById('nologo');
+            nologo.rel = "stylesheet alternate";    
         }
     </script>  
 </head>

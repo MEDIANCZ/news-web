@@ -12,46 +12,90 @@
     <title>Features & Fixes - LERACH software</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
 
     <!-- Custom fonts for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900&amp;subset=latin-ext" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=latin-ext" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900&amp;subset=latin-ext"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=latin-ext"
+        rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
 
     <link rel="stylesheet" href="css/nanoscroller.css">
 
-  <!-- Custom styles for this template -->
-  <link href="css/light-theme.css" rel="stylesheet" id="lightcss">
-  <link href="css/dark-theme.css" rel="stylesheet alternate"  id="darkcss"  title="Dark">
+    <!-- Custom styles for this template -->
+    <link href="css/light-theme.css" rel="stylesheet" id="lightcss">
+    <link href="css/dark-theme.css" rel="stylesheet alternate" id="darkcss" title="Dark">
+    <link href="css/nologo.css" rel="stylesheet alternate" id="nologo">
 
-   <script>
-       function enableStylesheet (node) {
-       node.rel = 'stylesheet';
-       }
+    <script>
+        function getJsonFromUrl(url) {
+            if (!url) url = location.href;
+            var question = url.indexOf("?");
+            var hash = url.indexOf("#");
+            if (hash == -1 && question == -1) return {};
+            if (hash == -1) hash = url.length;
+            var query = question == -1 || hash == question + 1 ? url.substring(hash) :
+                url.substring(question + 1, hash);
+            var result = {};
+            query.split("&").forEach(function (part) {
+                if (!part) return;
+                part = part.split("+").join(" "); // replace every + with space, regexp-free version
+                var eq = part.indexOf("=");
+                var key = eq > -1 ? part.substr(0, eq) : part;
+                var val = eq > -1 ? decodeURIComponent(part.substr(eq + 1)) : "";
+                var from = key.indexOf("[");
+                if (from == -1) result[decodeURIComponent(key)] = val;
+                else {
+                    var to = key.indexOf("]", from);
+                    var index = decodeURIComponent(key.substring(from + 1, to));
+                    key = decodeURIComponent(key.substring(0, from));
+                    if (!result[key]) result[key] = [];
+                    if (!index) result[key].push(val);
+                    else result[key][index] = val;
+                }
+            });
+            return result;
+        }
 
-       function disableStylesheet (node) {
-       node.rel = 'alternate stylesheet';
-       }
+        function enableStylesheet(node) {
+            node.rel = 'stylesheet';
+        }
 
-       var url = location.search;
+        function disableStylesheet(node) {
+            node.rel = 'alternate stylesheet';
+        }
 
-       if(url === "?theme=dark"){
+        var url = location.search;
 
-       var dark = document.getElementById('darkcss');
-       dark.rel = "stylesheet";
+        var obj = getJsonFromUrl(url);
 
-       var elem = document.getElementById('lightcss');
-       elem.rel = "stylesheet alternate";
-       }
-       else {
-           var dark = document.getElementById('darkcss');
-           dark.rel = "stylesheet alternate";
 
-           var elem = document.getElementById('lightcss');
-           elem.rel = "stylesheet";
-       }
-   </script>
+        if (obj["theme"] == "dark") {
+
+            var dark = document.getElementById('darkcss');
+            dark.rel = "stylesheet";
+
+            var elem = document.getElementById('lightcss');
+            elem.rel = "stylesheet alternate";
+        } else {
+            var dark = document.getElementById('darkcss');
+            dark.rel = "stylesheet alternate";
+
+            var elem = document.getElementById('lightcss');
+            elem.rel = "stylesheet";
+        }
+
+        if (obj["nologo"] == "true") {
+            var nologo = document.getElementById('nologo');
+            nologo.rel = "stylesheet";
+        } else {
+            var nologo = document.getElementById('nologo');
+            nologo.rel = "stylesheet alternate";
+        }
+    </script>
 
 </head>
 
@@ -59,12 +103,17 @@
 
     <div id="root"></div>
     <!-- Bootstrap core JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
-    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/regular.js" integrity="sha384-BazKgf1FxrIbS1eyw7mhcLSSSD1IOsynTzzleWArWaBKoA8jItTB5QR+40+4tJT1" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/fontawesome.js" integrity="sha384-2IUdwouOFWauLdwTuAyHeMMRFfeyy4vqYNjodih+28v2ReC+8j+sLF9cK339k5hY" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/regular.js" integrity="sha384-BazKgf1FxrIbS1eyw7mhcLSSSD1IOsynTzzleWArWaBKoA8jItTB5QR+40+4tJT1"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/fontawesome.js" integrity="sha384-2IUdwouOFWauLdwTuAyHeMMRFfeyy4vqYNjodih+28v2ReC+8j+sLF9cK339k5hY"
+        crossorigin="anonymous"></script>
 
     <script src="js/jquery.nanoscroller.min.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
